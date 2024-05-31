@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Games IML</title>
+</head>
+<body>
+
+    <div id="loader">
+    
+    <div class="center">
+        <div class="donut"></div>
+        </div>
+
+    </div>
+    <div id="App">
+        <div id="home-screen">
+            <div class="home-screen-header-container">
+                <div class="header-text-container">
+                    Games 
+                </div>
+                <div class="container">
+                    <input type="checkbox" id="toggle">
+                </div>
+            </div>
+
+            <div class="events-card-container">
+                <div class="card-data-container">
+                    <div class="data-main-one">
+                        <div id="event-name-container">F</div>
+                        <div id="venue-container">i</div>
+                    </div>
+                    <div class="data-main-two">
+                        <div id="time-container">Nov 14, 2024</div>
+                    </div>
+                </div>
+                <div class="main-card-container" id="card-container"></div>
+            </div>
+
+            <div class="home-screen-footer-container">
+                <div class="menu-btn-container">
+                    <img src="https://dl.dropbox.com/s/lf253sp8pctzs3h/menu%281%29.svg?dl=0" alt="menu button" onclick="openNav()">
+                </div>
+                <div class="add-event-container">©IMGames</div>
+            </div>
+        </div>
+
+        <div id="event-details-screen">
+            <div class="event-banner-container">
+                <div class="back-btn-container">
+                    <div id="back-btn" onclick="backBtn()">
+                        <img src="https://dl.dropbox.com/s/jpnk5cs7qveiwbm/left-arrow%281%29.svg?dl=0" alt="back button">
+                    </div>
+                    <div id="page-name">Back</div>
+                </div>
+            </div>
+
+            <div class="event-details-main">
+                <div class="details-event-name">
+                    <span></span>
+                    <button data-i="no">Free</button>
+                </div>
+                <div class="details-event-location"></div>
+                <div class="details-event-time"></div>
+
+                <div class="details-options-container">
+                    <button>Add to calendar</button>
+                    <button>
+                        <span>Play now </span>
+                        <img src="https://dl.dropbox.com/s/a91u0mrgctrmye3/right-arrow.svg?dl=0" style="transform: rotateZ(180deg)">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="navigation-screen">
+            <nav>
+                <a class="link" href="#">Home</a>
+                <a class="link" href="#">Add Event</a>
+                <a class="link" href="https://www.paypal.me/IsaacMontalvo18">Donate</a>
+                <a class="link" href="#">Contact Us</a>
+            </nav>
+        </div>
+    </div>
+<style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+
+
+
+/* cargando */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.donut {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: red;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: donut-spin 1s linear infinite;
+  -webkit-animation: donut-spin 1s linear infinite;
+  -moz-animation: donut-spin 1s linear infinite;
+  -ms-animation: donut-spin 1s linear infinite;
+  -o-animation: donut-spin 1s linear infinite;
+}
+
+/*ANIMATION*/
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*ANIMATION -webkit + -moz- + -ms- + -o-*/
+@-webkit-keyframes donut-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes donut-spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-ms-keyframes donut-spin {
+  0% {
+    -ms-transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+  }
+}
+@-o-keyframes donut-spin {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    -o-transform: rotate(360deg);
+  }
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#loader {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: fantasy;
+}
+
+#App {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: none;
+}
+
+#home-screen {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    transform-origin: top left;
+    transition: 0.5s;
+}
+
+#event-details-screen {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 100%;
+    z-index: 3;
+    transition: 0.5s;
+}
+
+.home-screen-header-container {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-screen-header-container div {
+    margin: 20px;
+}
+
+.header-text-container {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Varela Round';
+}
+
+.events-card-container {
+    width: 100%;
+    height: calc(100vh - 140px);
+    background: white;
+}
+
+.card-data-container {
+    width: 100%;
+    height: 15%;
+    display: flex;
+}
+
+.data-main-one {
+    width: 70%;
+    height: 100%;
+}
+
+#event-name-container {
+    width: 100%;
+    height: 60%;
+    font-size: 28px;
+    font-family: 'Prompt';
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+#venue-container {
+    width: 100%;
+    height: 40%;
+    font-size: 14px;
+    padding-left: 30px;
+    font-family: 'Prompt';
+}
+
+.data-main-two {
+    width: 30%;
+    height: 60%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Prompt';
+}
+
+.main-card-container {
+    width: 100%;
+    height: 85%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.card {
+    border-radius: 12px;
+    position: absolute;
+    transition: 0.5s;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.gone {
+    width: 210px;
+    height: 85%;
+    top: 7.5%;
+    left: -100%;
+    z-index: 1;
+}
+
+.first {
+    width: 170px;
+    height: 85%;
+    top: 7.5%;
+    left: 30px;
+    z-index: 2;
+}
+
+.second {
+    width: 160px;
+    height: 70%;
+    top: 15%;
+    left: 120px;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.third {
+    width: 150px;
+    height: 55%;
+    top: 22.5%;
+    left: 210px;
+    z-index: 0;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.coming {
+    width: 150px;
+    height: 55%;
+    top: 22.5%;
+    left: 100%;
+    z-index: -1;
+    opacity: 0;
+}
+
+.home-screen-footer-container {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+}
+
+.home-screen-footer-container div {
+    margin: 20px;
+}
+
+.add-event-container {
+    font-family: 'Varela Round';
+}
+
+.event-banner-container {
+    width: 100%;
+    height: 60vh;
+    background: linear-gradient(rgba(100,100,100,0.4), rgba(100,100,100,0.4)), url(Lighthouse.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.back-btn-container {
+    width: 100%;
+    height: 80px;
+    display: flex;
+}
+
+.back-btn-container div {
+    display: flex;
+    align-items: center;
+}
+
+#back-btn {
+    width: 15%;
+    height: 100%;
+    justify-content: center;
+}
+
+#page-name {
+    font-size: 20px;
+    color: white;
+    font-family: 'Varela Round';
+}
+.event-details-main {
+    width: 100%;
+    height: calc(40vh - 10px);
+    padding-top: 10px;
+    background: white;
+}
+
+.details-event-name {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details-event-name span {
+    margin-left: 30px;
+    font-size: 28px;
+    font-family: 'Prompt';
+}
+
+.details-event-name button {
+    margin-right: 30px;
+    padding: 10px;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Varela Round';
+}
+
+.details-event-name button[data-i="yes"] {
+    background: rgb(80, 200, 80);
+    color: white;
+}
+
+.details-event-name button[data-i="no"] {
+    background: white;
+    color: black;
+    border: 1px solid rgb(80, 200, 80);
+}
+
+.details-event-location {
+    margin-left: 30px;
+    font-size: 14px;
+    font-family: 'Prompt';
+}
+
+.details-event-time {
+    margin-left: 30px;
+    font-size: 12px;
+    font-family: 'Prompt';
+}
+
+.details-options-container {
+    margin-top: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.details-options-container button {
+    border: none;
+    font-family: 'Varela Round';
+    font-size: 14px;
+}
+
+.details-options-container button:nth-child(2) {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details-options-container button:nth-child(2) span {
+    color: rgb(80, 200, 80);
+    margin-right: 10px;
+}
+
+#navigation-screen {
+    width: 100%;
+    height: 100vh;
+    background: transparent;
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    align-items: flex-end;
+}
+
+#navigation-screen nav {
+    width: 150px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#navigation-screen nav a {
+    font-size: 18px;
+    margin: 10px;
+    color: black;
+    font-family: 'Varela Round';
+    text-decoration: none;
+}
+
+*, *:before, *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+#toggle {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 40px;
+    width: 75px;
+    background-color: #15181F;
+    border-radius: 20px;
+    position: absolute;
+    right: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+#toggle:after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+    outline: none;
+    transition: left 0.5s;
+}
+
+.dark-theme {
+    background-color: #15181F;
+    color: #e5e5e5;
+}
+
+.dark-theme #toggle {
+    background-color: #ffffff;
+}
+
+.dark-theme #toggle:after {
+    background-color: transparent;
+    box-shadow: 10px 10px #15181F;
+    top: -4px;
+    left: 30px;
+}
+
+.dark-theme a {
+    background-color: #e5e5e5;
+    color: #15181F;
+}
+
+.dark-theme .events-card-container, .dark-theme .home-screen-footer-container, .dark-theme .card-data-container, .dark-theme .data-main-one, .dark-theme .data-main-two, .dark-theme .main-card-container, .dark-theme .add-event-container, .dark-theme .event-details-main, .dark-theme .details-event-name, .dark-theme .details-event-location, .dark-theme .details-event-time, .dark-theme .details-options-container, .dark-theme #navigation-screen nav, .dark-theme #navigation-screen nav a {
+    background-color: #15181F;
+    color: #e5e5e5;
+}
+
+</style>
+<script>
+    // Variable definitions
+let homeScreen, detailsScreen;
+let cardContainer;
+let firstCard, secondCard, thirdCard;
+let gone, coming;
+let allCards;
+let touchStartX = 0, touchEndX = 0;
+let eventNameDiv, eventVenueDiv, eventTimeDiv;
+
+const cardData = [
+    {
+        title: 'MindMix®', 
+        venue: 'Strategy, Free', 
+        date: 'may 18th, 2024', 
+        image: 'https://play-lh.googleusercontent.com/AT4Eu38Sc3fqtKjPUIVl2_I-6VUxHkX3cnFKDQ21iE4lC3ulnd6jQEBpr9E9FwIkfGc',
+        link: 'https://i6yusx.mimo.run/index.html'
+    },
+    {
+        title: 'Snakefree®', 
+        venue: 'Think, Free', 
+        date: 'may 13th, 2024', 
+        image: 'https://i.pinimg.com/736x/bf/15/1e/bf151eca6d0cd5acc32123c147bfae12.jpg',
+        link: 'https://i6yusx.mimo.run/index.html'
+    },
+    {
+        title: 'pingPong®', 
+        venue: 'Strategy , Free', 
+        date: 'may 2nd, 2024', 
+        image: 'https://is2-ssl.mzstatic.com/image/thumb/Purple71/v4/45/6e/99/456e99b3-886b-313f-f7b1-225f7c42a6c2/source/512x512bb.jpg',
+        link: 'https://ry8ala.mimo.run/index.html'
+    },
+    {
+        title: 'PuzzleBliss®', 
+        venue: 'Think, Free', 
+        date: 'May 3rd, 2024', 
+        image: 'https://us.123rf.com/450wm/vectorv/vectorv1911/vectorv191105233/133397006-pieza-isom%C3%A9trica-del-icono-del-rompecabezas-aislado-sobre-fondo-verde-piso-moderno-negocios.jpg',
+        link: 'https://b08s57.mimo.run/index.html'
+    },
+    {
+        title: 'Triki®', 
+        venue: 'Strategy, Free',
+        date: 'may 13th, 2024', 
+        image: 'https://www.brandmanic.com/media/Hashtag.jpg',
+        link: 'https://z7wxgq.mimo.run/index.html'
+    },
+    
+];
+
+let cardNumber = 0;
+
+// Card changer function
+const changeCard = () => {
+    // Check which side it is swiped to
+    // Starting position is less than ending means right swipe
+    // Starting position is greater than ending means left swipe
+    if (Math.round(touchStartX) < Math.round(touchEndX)) {
+        // There should be at least one element in gone array
+        if (gone.length !== 0) {
+            // Any card should not be null otherwise it will throw error
+            if (firstCard != null) {
+                // First card moved to second card after swipe
+                firstCard.classList.add('second');
+                firstCard.classList.remove('first');
+                cardNumber--;
+            }
+            if (secondCard != null) {
+                // Second card moved to third card after swipe
+                secondCard.classList.add('third');
+                secondCard.classList.remove('second');
+            }
+            if (thirdCard != null) {
+                // Third card moved as coming card
+                thirdCard.classList.add('coming');
+                thirdCard.classList.remove('third');
+            }
+            // Get last element from gone array and make it first available card
+            gone[gone.length - 1].classList.add('first');
+            gone[gone.length - 1].classList.remove('gone');
+        }
+    } else if (Math.round(touchStartX) === Math.round(touchEndX)) {
+        // console.log("equal");
+        // Does nothing really, lol
+    } else {
+        // Again, check for null
+        if (secondCard != null) {
+            if (firstCard != null) {
+                // First card moved to gone
+                firstCard.classList.add('gone');
+                firstCard.classList.remove('first');
+                cardNumber++;
+            }
+            if (secondCard != null) {
+                // Second becomes first
+                secondCard.classList.add('first');
+                secondCard.classList.remove('second');
+            }
+            if (thirdCard != null) {
+                // Third becomes second
+                thirdCard.classList.add('second');
+                thirdCard.classList.remove('third');
+            }
+            if (coming.length !== 0) {
+                // First card from coming array becomes third
+                coming[0].classList.add('third');
+                coming[0].classList.remove('coming');
+            }
+        }
+    }
+
+    // Setting variables again because classes are changed
+    initializeCardVars();
+    changeCardDetail(cardData[cardNumber]);
+}
+
+// Initialize/re-initializing variables
+const initializeCardVars = () => {
+    gone = document.getElementsByClassName('gone');
+    coming = document.getElementsByClassName('coming');
+    firstCard = document.querySelector('.first');
+    secondCard = document.querySelector('.second');
+    thirdCard = document.querySelector('.third');
+}
+
+const cardOpener = (index) => {
+    alert(index);
+}
+
+const changeCardDetail = (data) => {
+    eventNameDiv.innerText = data.title;
+    eventVenueDiv.innerText = data.venue;
+    eventTimeDiv.innerText = data.date;
+}
+
+const openDetailsPage = (data) => {
+    const eventNameSpan = document.querySelector('.details-event-name span');
+    eventNameSpan.innerText = data.title;
+
+    const eventLocation = document.querySelector('.details-event-location');
+    eventLocation.innerText = data.venue;
+
+    const eventTime = document.querySelector('.details-event-time');
+    eventTime.innerText = data.date;
+
+    const bannerContainer = document.querySelector('.event-banner-container');
+    bannerContainer.style.background = `linear-gradient(rgba(100,100,100,0.4), rgba(100,100,100,0.4)), url(${data.image})`;
+    bannerContainer.style.backgroundPosition = "top";
+    bannerContainer.style.backgroundSize = "cover";
+    bannerContainer.style.backgroundRepeat = "no-repeat";
+
+    const playNowButton = document.querySelector('.details-options-container button:nth-child(2)');
+    playNowButton.onclick = () => {
+        window.location.href = data.link;
+    };
+
+    detailsScreen.style.left = "0";
+}
+
+let isNavOpen = false;
+
+const openNav = () => {
+    if (!isNavOpen) {
+        homeScreen.style.transform = "rotateZ(-25deg)";
+        cardContainer.style.pointerEvents = "none";
+    } else {
+        homeScreen.style.transform = "rotateZ(0deg)";
+        cardContainer.style.pointerEvents = "all";
+    }
+    isNavOpen = !isNavOpen;
+}
+
+const backBtn = () => {
+    detailsScreen.style.left = "100%";
+}
+
+// Wait for window to load
+window.onload = () => {
+    homeScreen = document.getElementById('home-screen');
+    detailsScreen = document.getElementById('event-details-screen');
+    cardContainer = document.getElementById('card-container');
+    eventNameDiv = document.getElementById('event-name-container');
+    eventVenueDiv = document.getElementById('venue-container');
+    eventTimeDiv = document.getElementById('time-container');
+
+    cardData.forEach((data, index) => {
+        let classes = "card ";
+        switch(index) {
+            case 0: 
+                classes += "first";
+                changeCardDetail(data);
+                break;
+            case 1:
+                classes += "second";
+                break;
+            case 2: 
+                classes += "third";
+                break;
+            default:
+                classes += "coming";
+                break;
+        }
+        const cardDiv = document.createElement('div');
+        cardDiv.classList = classes;
+        cardDiv.style.backgroundImage = `url(${data.image})`;
+        cardDiv.addEventListener('click', () => openDetailsPage(data));
+        cardContainer.appendChild(cardDiv);
+    });
+
+    // Select from DOM
+    cardChangeDetector = document.getElementById('change-detector');
+    allCards = document.querySelectorAll('.card');
+    // allCards.forEach((card, index) => {
+    //     card.addEventListener('click', () => {
+    //         cardOpener(index);
+    //     });
+    // });
+
+    // For setting initial values to variable.
+    initializeCardVars();
+
+    // mousedown and mouseup are for desktop browsers
+    cardContainer.addEventListener('mousedown', (e) => {
+        touchStartX = e.clientX;
+    });
+    
+    cardContainer.addEventListener('mouseup', (e) => {
+        touchEndX = e.clientX;
+        changeCard();
+    });
+
+   // touchstart and touchend events are for mobiles
+    cardContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    });
+
+    cardContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        changeCard();
+    });
+
+    const loader = document.querySelector('#loader');
+    const app = document.querySelector('#App');
+    loader.style.display = "none";
+    app.style.display = "block";
+}
+</scrip
