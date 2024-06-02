@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - IMGames</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Política de Privacidad</h1>
+        <p><strong>Última actualización: 2 de junio de 2024</strong></p>
+        <p>En IMGames, accesible desde <a href="https://imgames2.000webhostapp.com/">https://imgames2.000webhostapp.com/</a>, una de nuestras principales prioridades es la privacidad de nuestros visitantes. Esta Política de Privacidad documenta los tipos de información que se recopilan y registran en IMGames y cómo la usamos.</p>
+        
+        <h2>Información que recopilamos</h2>
+        <h3>Información personal</h3>
+        <p>Cuando te registras en nuestro sitio, te pedimos que nos proporciones información personal que incluye, pero no se limita a, tu nombre, dirección de correo electrónico y número de teléfono.</p>
+        
+        <h3>Datos de uso</h3>
+        <p>Recopilamos información que tu navegador envía cada vez que visitas nuestro sitio web ("Datos de uso"). Estos Datos de uso pueden incluir información como la dirección de Protocolo de Internet de tu computadora (por ejemplo, dirección IP), tipo de navegador, versión del navegador, las páginas de nuestro sitio que visitas, la hora y la fecha de tu visita, el tiempo que pasas en esas páginas, identificadores únicos de dispositivos y otros datos de diagnóstico.</p>
+        
+        <h3>Cookies y tecnologías similares</h3>
+        <p>Utilizamos cookies y tecnologías de seguimiento similares para rastrear la actividad en nuestro sitio y mantener cierta información. Puedes instruir a tu navegador para que rechace todas las cookies o para que indique cuándo se envía una cookie. Sin embargo, si no aceptas cookies, es posible que no puedas utilizar algunas partes de nuestro sitio web.</p>
+        
+        <h2>Cómo usamos tu información</h2>
+        <p>Utilizamos la información que recopilamos de varias maneras, incluyendo:</p>
+        <ul>
+            <li>Para proporcionar, operar y mantener nuestro sitio web.</li>
+            <li>Para mejorar, personalizar y expandir nuestro sitio web.</li>
+            <li>Para comprender y analizar cómo utilizas nuestro sitio web.</li>
+            <li>Para desarrollar nuevos productos, servicios, características y funcionalidades.</li>
+            <li>Para comunicarnos contigo, ya sea directamente o a través de uno de nuestros socios, incluidos para servicio al cliente, para proporcionarte actualizaciones y otra información relacionada con el sitio web, y para fines de marketing y promoción.</li>
+            <li>Para procesar tus transacciones y gestionar tus pedidos.</li>
+            <li>Para enviarte correos electrónicos.</li>
+            <li>Para detectar y prevenir fraudes.</li>
+        </ul>
+        
+        <h2>Compartición de información</h2>
+        <p>Podemos compartir tu información personal con terceros de confianza que nos asisten en la operación de nuestro sitio web, la conducción de nuestro negocio o el servicio a nuestros usuarios, siempre y cuando dichas partes acuerden mantener esta información confidencial. También podemos liberar tu información cuando creemos que su liberación es apropiada para cumplir con la ley, hacer cumplir nuestras políticas del sitio, o proteger los derechos, la propiedad o la seguridad nuestra o de otros.</p>
+        
+        <h2>Seguridad de la información</h2>
+        <p>Implementamos una variedad de medidas de seguridad para mantener la seguridad de tu información personal cuando ingresas, envías o accedes a tu información personal. Sin embargo, ten en cuenta que ningún método de transmisión por Internet o de almacenamiento electrónico es 100% seguro y fiable, y no podemos garantizar su seguridad absoluta.</p>
+        
+        <h2>Derechos de los usuarios</h2>
+        <p>Tienes derecho a acceder, corregir, actualizar o solicitar la eliminación de tu información personal. Para hacerlo, por favor contáctanos a través de los medios indicados a continuación.</p>
+        
+        <h2>Cambios a esta Política de Privacidad</h2>
+        <p>Podemos actualizar nuestra Política de Privacidad de vez en cuando. Te notificaremos de cualquier cambio publicando la nueva Política de Privacidad en esta página. Te recomendamos que revises esta Política de Privacidad periódicamente para cualquier cambio.</p>
+        
+        <h2>Contacto</h2>
+        <p>Si tienes alguna pregunta sobre esta Política de Privacidad, por favor contáctanos:</p>
+        <ul>
+            <li>Por correo electrónico: <a href="mailto:panalejandro51@gmail.com">panalejandro51@gmail.com</a></li>
+            <li>Por teléfono: +57 322 3649309</li>
+            
+        </ul>
+    </div>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    color: #333;
+}
+
+h3 {
+    color: #555;
+}
+
+p, ul, li {
+    color: #555;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+    </style>
+</body>
+</html>
